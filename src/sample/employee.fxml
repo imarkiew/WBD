@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox id="MainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="900.0" stylesheets="/employee.css" xmlns="http://javafx.com/javafx/8.0.111"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Employee">
+    <children>
+        <MenuBar prefWidth="910.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Wlasne Informacje">
+                    <items>
+                        <MenuItem fx:id="ownInfos" mnemonicParsing="false" onAction="#showInformation"
+                                  text="Twoje Dane"/>
+                        <MenuItem fx:id="ownPayment" mnemonicParsing="false" onAction="#showPayment"
+                                  text="Wynagrodzenie"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="Clients" mnemonicParsing="false" text="Klienci">
+                    <items>
+                        <MenuItem fx:id="addClient" mnemonicParsing="false" onAction="#addClient" text="Dodaj Klienta"/>
+                        <MenuItem fx:id="showClient" mnemonicParsing="false" onAction="#setTextClient"
+                                  text="Wyświetl Klientów"/>
+                        <MenuItem fx:id="editClient" mnemonicParsing="false" onAction="#editClientInfo"
+                                  text="Edytuj Klienta"/>
+                        <MenuItem fx:id="removeClient" mnemonicParsing="false" onAction="#removeClient"
+                                  text="Usuń Klienta"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reklamacje">
+                    <items>
+                        <MenuItem fx:id="pokazComplaints" mnemonicParsing="false" onAction="#setTextComplaints"
+                                  text="Wyświetl reklamacje"/>
+                        <MenuItem fx:id="editComplaints" mnemonicParsing="false" onAction="#editComplaints"
+                                  text="Edytuj reklamacje"/>
+                        <MenuItem fx:id="removeComplaints" mnemonicParsing="false" onAction="#removeComplaints"
+                                  text="Usuń reklamacje"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Promocje">
+                    <items>
+                        <MenuItem fx:id="showPromotions" mnemonicParsing="false" onAction="#setTextPromotion"
+                                  text="Wyświetl Aktualne Promocje"/>
+                        <MenuItem fx:id="showPromotion" mnemonicParsing="false" onAction="#setTextPromotionsOfClient"
+                                  text="Wyświetl Promocje Klientów"/>
+                        <MenuItem fx:id="setPromotion" mnemonicParsing="false" onAction="#addPromotion"
+                                  text="Przydziel Promocje"/>
+                        <MenuItem fx:id="removePromotion" mnemonicParsing="false" onAction="#removePromotion"
+                                  text="Usun Promocje"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Umowy">
+                    <items>
+                        <MenuItem fx:id="addAgreement" mnemonicParsing="false" onAction="#addAgreement"
+                                  text="Dodaj Umowę"/>
+                        <MenuItem fx:id="showAgreement" mnemonicParsing="false" onAction="#setTextAgreement"
+                                  text="Wyświetl Umowy"/>
+                        <MenuItem fx:id="editUmowy" mnemonicParsing="false" onAction="#editAgreement"
+                                  text="Edytuj Umowy"/>
+                        <MenuItem fx:id="removeUmowy" mnemonicParsing="false" onAction="#removeAgreement"
+                                  text="Usuń umowę"/>
+
+                    </items>
+                </Menu>
+                <Menu fx:id="Opcje" mnemonicParsing="false" text="Opcje">
+                    <items>
+                        <MenuItem id="Zamknij" mnemonicParsing="false" onAction="#close" text="Zamknij"/>
+                    </items>
+                </Menu>
+            </menus>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </MenuBar>
+        <HBox prefHeight="500.0" prefWidth="900.0">
+            <children>
+                <VBox prefHeight="500.0" prefWidth="537.0">
+                    <children>
+                        <TextArea fx:id="TextLeft" opacity="0.7" prefHeight="500.0" prefWidth="275.0"/>
+                    </children>
+                </VBox>
+                <VBox layoutX="163.0" layoutY="10.0" prefHeight="500.0" prefWidth="175.0">
+                    <children>
+                        <Label fx:id="Label1" alignment="CENTER_RIGHT" opacity="0.7" prefHeight="23.0" prefWidth="168.0"
+                               text="ID Klienta* :" textAlignment="CENTER" wrapText="true">
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="Label2" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="20.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="PESEL :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label3" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="43.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Imie*  :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="11.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label4" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="66.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Nazwisko* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="11.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label5" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="89.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Ulica* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label6" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="112.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Nr. Mieszkania* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label7" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="135.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Kod Pocztowy* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label8" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="158.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Miejscowość* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label9" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="181.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="NIP :" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label10" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="204.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Login* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label11" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="227.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="Haslo* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="Label12" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="250.0" opacity="0.7"
+                               prefHeight="23.0" prefWidth="168.0" text="ID Biura* :" textAlignment="CENTER"
+                               wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="12.0"/>
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="313.0" layoutY="10.0" prefHeight="500.0" prefWidth="175.0">
+                    <children>
+                        <TextField fx:id="Field1" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field2" layoutX="10.0" layoutY="10.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field3" layoutX="10.0" layoutY="40.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field4" layoutX="10.0" layoutY="70.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field5" layoutX="10.0" layoutY="95.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field6" layoutX="10.0" layoutY="120.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field7" layoutX="10.0" layoutY="145.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field8" layoutX="10.0" layoutY="170.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field9" layoutX="10.0" layoutY="195.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field10" layoutX="10.0" layoutY="220.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field11" layoutX="10.0" layoutY="245.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="Field12" layoutX="10.0" layoutY="270.0" opacity="0.7">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="LabelUnderFields" alignment="CENTER" blendMode="MULTIPLY" layoutX="9.0"
+                                       layoutY="14.0" prefHeight="31.0" prefWidth="158.0" text="*Pola Obowiązkowe"
+                                       textAlignment="CENTER" textFill="RED">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="687.0" minWidth="10.0" prefWidth="687.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="135.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="88.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="25.0" minHeight="9.0" prefHeight="13.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="accept" mnemonicParsing="false" onAction="#ButtonPressed" prefHeight="33.0"
+                        prefWidth="132.0" text="Akceptuj" GridPane.columnIndex="1"/>
+                <Label fx:id="infoLabel" alignment="CENTER" blendMode="MULTIPLY" prefHeight="31.0" prefWidth="683.0"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
+</VBox>

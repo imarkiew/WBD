@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane id="FlowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="500.0" prefWidth="700.0" stylesheets="/client.css" xmlns="http://javafx.com/javafx/8.0.112"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Client">
+    <children>
+        <MenuBar prefWidth="710.0">
+            <menus>
+                <Menu fx:id="Informacje" mnemonicParsing="false" text="Informacje">
+                    <items>
+                        <MenuItem fx:id="Pokaz" mnemonicParsing="false" onAction="#showInformation" text="Pokaż"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="Zgloszenie" mnemonicParsing="false" text="Zgłoszenie">
+                    <items>
+                        <MenuItem fx:id="pokazZgloszenia" mnemonicParsing="false" onAction="#setTextComplaints"
+                                  text="Twoje zgloszenia"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reklamacja">
+                    <items>
+                        <MenuItem fx:id="pokazComplaints" mnemonicParsing="false" onAction="#setTextMalfunction"
+                                  text="Twoje reklamacje"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Promocje">
+                    <items>
+                        <MenuItem id="Promotion" mnemonicParsing="false" onAction="#setTextPromotion"
+                                  text="Twoje promocje"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Umowy">
+                    <items>
+                        <MenuItem fx:id="showAgreement" mnemonicParsing="false" onAction="#setTextAgreement"
+                                  text="Wyświetl Umowy Klienta"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="Opcje" mnemonicParsing="false" text="Opcje">
+                    <items>
+                        <MenuItem id="Zamknij" mnemonicParsing="false" onAction="#close" text="Zamknij"/>
+                    </items>
+                </Menu>
+            </menus>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </MenuBar>
+        <Label fx:id="label" prefHeight="400.0" prefWidth="350.0">
+            <graphic>
+                <TextArea fx:id="TextLeft" blendMode="MULTIPLY" editable="false" maxWidth="350.0" minWidth="350.0"
+                          nodeOrientation="LEFT_TO_RIGHT" opacity="100" prefHeight="400.0" prefWidth="350.0"
+                          scrollLeft="4.0" visible="true" wrapText="true">
+                </TextArea>
+            </graphic>
+        </Label>
+        <TextArea fx:id="TextRight" blendMode="MULTIPLY" editable="false" prefHeight="400.0" prefWidth="350.0"
+                  visible="true" wrapText="true"/>
+        <GridPane prefHeight="65.0" prefWidth="675.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="562.0" minWidth="10.0" prefWidth="511.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="188.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="accept" disable="true" mnemonicParsing="false" onAction="#ButtonPressed"
+                        prefHeight="37.0" prefWidth="102.0" text="Złóż" visible="false" GridPane.columnIndex="1"/>
+                <Label fx:id="infoLabel" alignment="CENTER" blendMode="MULTIPLY" prefHeight="76.0" prefWidth="497.0"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
+</FlowPane>
