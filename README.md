@@ -1,2 +1,2 @@
 # WBD
-Współpraca z Konrad Sobolewski
+Cooperation with Konrad Sobolewski.
